@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İtiraf Sitesi - Pro Edition</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌙</span>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">💭 İtiraf Sitesi</h1>
+            <p class="subtitle">Anonim itiraflarınızı paylaşın</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalConfessions">0</span>
+                    <span class="stat-label">İtiraf</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalLikes">0</span>
+                    <span class="stat-label">Beğeni</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="todayConfessions">0</span>
+                    <span class="stat-label">Bugün</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="confession-form">
+            <div class="category-selector">
+                <label for="categorySelect">Kategori:</label>
+                <select id="categorySelect">
+                    <option value="genel">🌟 Genel</option>
+                    <option value="ask">💕 Aşk</option>
+                    <option value="is">💼 İş/Okul</option>
+                    <option value="aile">👨‍👩‍👧‍👦 Aile</option>
+                    <option value="arkadas">👫 Arkadaşlık</option>
+                    <option value="korku">😱 Korku/Endişe</option>
+                    <option value="mutluluk">😊 Mutluluk</option>
+                    <option value="pisman">😔 Pişmanlık</option>
+                </select>
+            </div>
+
+            <textarea id="confessionText" placeholder="İtirafınızı buraya yazın..." maxlength="500"></textarea>
+
+            <div class="emoji-picker" id="emojiPicker">
+                <div class="emoji-grid">
+                    <span class="emoji-btn">😊</span>
+                    <span class="emoji-btn">😢</span>
+                    <span class="emoji-btn">😍</span>
+                    <span class="emoji-btn">😱</span>
+                    <span class="emoji-btn">😡</span>
+                    <span class="emoji-btn">🤔</span>
+                    <span class="emoji-btn">😴</span>
+                    <span class="emoji-btn">🥺</span>
+                    <span class="emoji-btn">🤗</span>
+                    <span class="emoji-btn">😅</span>
+                    <span class="emoji-btn">🙄</span>
+                    <span class="emoji-btn">😭</span>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button id="submitBtn" class="submit-btn">
+                    <span class="btn-text">İtiraf Et</span>
+                    <span class="btn-icon">🚀</span>
+                </button>
+                <div class="char-counter">
+                    <span id="charCount">0</span>/500
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="İtiraf ara..." />
+                <button id="searchBtn">🔍</button>
+            </div>
+
+            <div class="filter-controls">
+                <select id="categoryFilter">
+                    <option value="all">Tüm Kategoriler</option>
+                    <option value="genel">🌟 Genel</option>
+                    <option value="ask">💕 Aşk</option>
+                    <option value="is">💼 İş/Okul</option>
+                    <option value="aile">👨‍👩‍👧‍👦 Aile</option>
+                    <option value="arkadas">👫 Arkadaşlık</option>
+                    <option value="korku">😱 Korku/Endişe</option>
+                    <option value="mutluluk">😊 Mutluluk</option>
+                    <option value="pisman">😔 Pişmanlık</option>
+                </select>
+
+                <select id="sortSelect">
+                    <option value="newest">En Yeni</option>
+                    <option value="oldest">En Eski</option>
+                    <option value="mostLiked">En Beğenilen</option>
+                    <option value="random">Rastgele</option>
+                </select>
+            </div>
+
+            <div class="action-buttons">
+                <button id="randomBtn" class="action-btn">🎲 Rastgele İtiraf</button>
+                <button id="dailyBtn" class="action-btn">⭐ Günün İtirafı</button>
+                <button id="favoritesBtn" class="action-btn">❤️ Favoriler</button>
+            </div>
+        </div>
+
+        <div class="confessions-container">
+            <h2 class="section-title">📝 İtiraflar</h2>
+            <div id="confessionsList" class="confessions-list">
+                <!-- İtiraflar burada görünecek -->
+            </div>
+        </div>
+
+        <div class="floating-emojis">
+            <div class="emoji">💫</div>
+            <div class="emoji">✨</div>
+            <div class="emoji">🌟</div>
+            <div class="emoji">💭</div>
+            <div class="emoji">🎈</div>
+            <div class="emoji">🦋</div>
+            <div class="emoji">🌸</div>
+            <div class="emoji">🎭</div>
+        </div>
+    </div>
+
+    <!-- Bildirim Container -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <!-- Modal -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Yorumlar</h3>
+            <div id="commentsList" class="comments-list"></div>
+            <div class="comment-form">
+                <textarea id="commentText" placeholder="Yorumunuzu yazın..." maxlength="200"></textarea>
+                <button id="addCommentBtn">Yorum Ekle</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
